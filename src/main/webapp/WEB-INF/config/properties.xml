@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>System configure</comment>
+	
+	<!-- Database -->
+	<entry key="mongodb.host">192.168.0.100</entry>
+	<entry key="mongodb.port">5050</entry>
+	<entry key="mongodb.databaseName">anajo</entry>
+
+</properties>

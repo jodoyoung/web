@@ -5,6 +5,7 @@ import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.EnumSet;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +20,7 @@ public class FileService {
 
 	public void indexingDirectory() {
 		FileIndexer walk = new FileIndexer();
-		EnumSet<FileVisitOption> opts = EnumSet.of(FileVisitOption.FOLLOW_LINKS);
+		Set<FileVisitOption> opts = EnumSet.of(FileVisitOption.FOLLOW_LINKS);
 		try {
 			Files.walkFileTree(Paths.get(ROOT_DIRECTORY), opts, Integer.MAX_VALUE, walk);
 		} catch (IOException ioe) {

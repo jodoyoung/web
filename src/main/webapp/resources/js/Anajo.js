@@ -8,6 +8,7 @@ Anajo.config([ '$routeProvider', '$locationProvider', '$logProvider', function($
     	.when('/create', { templateUrl: '/resources/view/resource/create.html', controller: 'ResourceCreateController' })
         .when('/picture', { templateUrl: '/resources/view/picture/list.html', controller: 'PictureListController' })
         .when('/picture/directory/:path*', { templateUrl: '/resources/view/picture/list.html', controller: 'PictureListController' })
+        .when('/chat', { templateUrl: '/resources/view/chat/chat.html', controller: 'ChatController' })
         .otherwise({ redirectTo : '/' });
     
     $locationProvider.html5Mode({

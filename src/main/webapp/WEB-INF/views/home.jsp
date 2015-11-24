@@ -41,6 +41,7 @@
 	<script src="${contextPath}/resources/js/controller/resource/ResourceController.js"></script>
 	<script src="${contextPath}/resources/js/controller/resource/ResourceCreateController.js"></script>
 	<script src="${contextPath}/resources/js/controller/picture/PictureListController.js"></script>
+	<script src="${contextPath}/resources/js/controller/chat/ChatController.js"></script>
 </head>
 <body ng-controller="MainController">
 	<div id="wrap">

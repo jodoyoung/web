@@ -1,11 +1,11 @@
 package kr.co.anajo.server.component.chat;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-@Component
+@Service
 public class ChatHandler extends TextWebSocketHandler {
 	
 	@Override

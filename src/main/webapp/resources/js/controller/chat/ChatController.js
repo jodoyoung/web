@@ -1,6 +1,7 @@
 controllers.controller('ChatController', [ '$scope', '$routeParams', '$log', '$timeout', function($scope, $routeParams, $log, $timeout) {
     $log.debug('[ChatController] >>> Start >>>');
     
+    $scope.name = 'Unkown';
     $scope.message = '';
     $scope.ws;
     $scope.echoMessages = [];
@@ -26,6 +27,6 @@ controllers.controller('ChatController', [ '$scope', '$routeParams', '$log', '$t
     }
 
     $scope.send = function() {
-    	$scope.ws.send($scope.message);
+    	$scope.ws.send($scope.name + ': ' + $scope.message);
     };
 }]);

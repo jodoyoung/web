@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -14,14 +15,18 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
+import org.imgscalr.Scalr;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
 import kr.co.anajo.server.SessionContext;
 import kr.co.anajo.server.presentation.model.PictureModel;
 
-import org.imgscalr.Scalr;
-import org.springframework.stereotype.Service;
-
 @Service
 public class ImageService {
+
+	private static final Logger log = LoggerFactory.getLogger(ImageService.class);
 
 	/** 사진 최상위 폴더 경로 */
 	private static final String PICTURE_ROOT_PATH = "/opt/data/picture/";
@@ -71,6 +76,11 @@ public class ImageService {
 	 */
 	public Map<String, Object> getDirectoryItems(String directoryPath) throws IOException {
 		Path dirPath = Paths.get(this.getUserPictureRootPath() + directoryPath);
+
+		if (Files.notExists(dirPath, LinkOption.NOFOLLOW_LINKS)) {
+			log.warn("Picture Directory Not Found. Path: {}", dirPath.toString());
+			return null;
+		}
 
 		File directory = dirPath.toFile();
 		File[] items = directory.listFiles();

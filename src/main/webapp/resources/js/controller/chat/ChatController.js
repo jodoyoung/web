@@ -7,6 +7,7 @@ controllers.controller('ChatController', [ '$scope', '$routeParams', '$log', '$t
     $scope.echoMessages = [];
     
     $scope.ws = new WebSocket('ws://localhost/chat');
+//    $scope.ws = new WebSocket('ws://anajo.co.kr/chat');
     
     $scope.ws.onopen = function() {
     	$log.debug('websocket opened');

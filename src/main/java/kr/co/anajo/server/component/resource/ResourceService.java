@@ -2,13 +2,17 @@ package kr.co.anajo.server.component.resource;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -24,6 +28,8 @@ import kr.co.anajo.server.util.IdGenerator;
 
 @Service("resourceService")
 public class ResourceService {
+	
+	private static final Logger log = LoggerFactory.getLogger(ResourceService.class);
 
 	@Autowired
 	private ResourceDao resourceDao;
@@ -70,6 +76,15 @@ public class ResourceService {
 			menu.setParentId(parentId);
 			menuService.createMenu(menu);
 			return menu;
+		} else if(type == ResourceType.FILE) {
+			Collection<Part> parts = request.getParts();
+			for(Part part : parts) {
+				log.debug("ppppp ==== {}", part.getContentType());
+				log.debug("ppppp ==== {}", part.getHeaderNames());
+				log.debug("ppppp ==== {}", part.getName());
+				log.debug("ppppp ==== {}", part.getSize());
+				log.debug("ppppp ==== {}", part.getSubmittedFileName());
+			}
 		}
 		return null;
 	}

@@ -88,17 +88,22 @@ public class ImageService {
 
 		List<PictureModel> directories = new ArrayList<PictureModel>();
 		List<PictureModel> thumbnails = new ArrayList<PictureModel>();
+		List<PictureModel> videos = new ArrayList<PictureModel>();
 
+		PictureModel entry = null;
 		for (File item : items) {
+			entry = new PictureModel(item.getName(), directoryPath + "/" + item.getName());
 			if (item.isDirectory()) {
-				directories.add(new PictureModel(item.getName(), directoryPath + "/" + item.getName()));
+				directories.add(entry);
 			} else if (item.isFile()) {
 				Path source = Paths.get(item.getPath());
 				String contentType = Files.probeContentType(source);
 				if (contentType != null) {
 					String type = contentType.split("/")[0];
 					if (type.equals("image")) {
-						thumbnails.add(new PictureModel(item.getName(), directoryPath + "/" + item.getName()));
+						thumbnails.add(entry);
+					} else if (type.equals("video")) {
+						videos.add(entry);
 					}
 				}
 			}
@@ -107,8 +112,10 @@ public class ImageService {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("directories", directories);
 		model.put("thumbnails", thumbnails);
+		model.put("videos", videos);
 		model.put("directoryCount", directories.size());
 		model.put("thumbnailCount", thumbnails.size());
+		model.put("videoCount", videos.size());
 		return model;
 	}
 

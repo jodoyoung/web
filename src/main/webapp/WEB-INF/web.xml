@@ -24,7 +24,7 @@
 	<!-- default servlet filter -->
 	<filter>
 		<filter-name>staticResourceFilter</filter-name>
-		<filter-class>kr.co.anajo.server.StaticResourceFilter</filter-class>
+		<filter-class>kr.co.anajo.web.StaticResourceFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>staticResourceFilter</filter-name>
@@ -35,7 +35,7 @@
 	<!-- authentication filter -->
 	<filter>
 		<filter-name>authenticationFilter</filter-name>
-		<filter-class>kr.co.anajo.server.AuthenticationFilter</filter-class>
+		<filter-class>kr.co.anajo.web.AuthenticationFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>authenticationFilter</filter-name>

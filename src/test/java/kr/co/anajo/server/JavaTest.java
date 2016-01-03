@@ -1,8 +1,8 @@
 package kr.co.anajo.server;
 
-import kr.co.anajo.server.component.resource.ResourceType;
-
 import org.junit.Test;
+
+import kr.co.anajo.web.component.resource.ResourceType;
 
 public class JavaTest {
 

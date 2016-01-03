@@ -13,7 +13,7 @@
     <mvc:annotation-driven />
     
     <!-- Controller Scan -->
-    <context:component-scan base-package="kr.co.anajo.server.presentation.controller" />
+    <context:component-scan base-package="kr.co.anajo.web.presentation.controller" />
 
     <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

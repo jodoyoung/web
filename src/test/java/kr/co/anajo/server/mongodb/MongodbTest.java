@@ -4,11 +4,11 @@ import java.io.FileNotFoundException;
 import java.util.Date;
 import java.util.List;
 
-import kr.co.anajo.server.component.member.model.Member;
-import kr.co.anajo.server.component.member.model.MemberStatus;
-import kr.co.anajo.server.component.resource.Resource;
-import kr.co.anajo.server.component.resource.ResourceType;
-import kr.co.anajo.server.util.IdGenerator;
+import kr.co.anajo.web.component.member.model.Member;
+import kr.co.anajo.web.component.member.model.MemberStatus;
+import kr.co.anajo.web.component.resource.Resource;
+import kr.co.anajo.web.component.resource.ResourceType;
+import kr.co.anajo.web.util.IdGenerator;
 
 import org.junit.Before;
 import org.junit.Test;

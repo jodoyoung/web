@@ -19,7 +19,7 @@
 	<util:properties id="config" location="/WEB-INF/config/properties.xml" />
 	
 	<!-- Component Scan -->
-	<context:component-scan base-package="kr.co.anajo.server.component" />
+	<context:component-scan base-package="kr.co.anajo.web.component" />
     
 	<!-- Database Configuration -->
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">

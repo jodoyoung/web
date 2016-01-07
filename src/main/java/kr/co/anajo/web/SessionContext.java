@@ -5,8 +5,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.google.gson.JsonObject;
+
 import kr.co.anajo.web.component.auth.AuthService;
-import kr.co.anajo.web.component.member.model.Member;
 
 public class SessionContext {
 
@@ -23,8 +24,8 @@ public class SessionContext {
 		return httpSession.getAttribute(key);
 	}
 
-	public static Member getCurrentUser() {
-		Member member = (Member) SessionContext.getAttribute(AuthService.SESSION_USER_KEY);
+	public static JsonObject getCurrentUser() {
+		JsonObject member = (JsonObject) SessionContext.getAttribute(AuthService.SESSION_USER_KEY);
 		return member;
 	}
 

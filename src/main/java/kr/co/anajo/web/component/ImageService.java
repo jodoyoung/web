@@ -40,7 +40,7 @@ public class ImageService {
 	 * @return path
 	 */
 	private String getUserPictureRootPath() {
-		return PICTURE_ROOT_PATH + SessionContext.getCurrentUser().getId();
+		return PICTURE_ROOT_PATH + SessionContext.getCurrentUser().get("id").getAsString();
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class ImageService {
 	 * @return path
 	 */
 	private String getUserThumbnailRootPath() {
-		return THUMBNAIL_ROOT_PATH + SessionContext.getCurrentUser().getId();
+		return THUMBNAIL_ROOT_PATH + SessionContext.getCurrentUser().get("id").getAsString();
 	}
 
 	/**

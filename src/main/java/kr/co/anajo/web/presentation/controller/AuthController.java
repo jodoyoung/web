@@ -26,7 +26,7 @@ public class AuthController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(String loginId, String password,
-			@RequestHeader(value = "referer", required = false) String referer) {
+			@RequestHeader(value = "referer", required = false) String referer) throws Exception {
 		logger.debug("login id: {}, password: {}", loginId, password);
 		this.authService.login(loginId, password);
 		// TODO home menu uri redirect

@@ -14,8 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.gson.JsonObject;
+
 import kr.co.anajo.web.component.auth.AuthService;
-import kr.co.anajo.web.component.member.model.Member;
 
 public class AuthenticationFilter implements Filter {
 
@@ -42,7 +43,7 @@ public class AuthenticationFilter implements Filter {
 		}
 
 		Object obj = request.getSession().getAttribute(AuthService.SESSION_USER_KEY);
-		if (obj != null && obj instanceof Member) {
+		if (obj != null && obj instanceof JsonObject) {
 			chain.doFilter(req, res);
 		} else {
 			RequestDispatcher dispatcher = this.filterConfig.getServletContext().getRequestDispatcher(

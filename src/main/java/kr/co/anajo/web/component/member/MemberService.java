@@ -2,11 +2,18 @@ package kr.co.anajo.web.component.member;
 
 import java.util.List;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import kr.co.anajo.web.component.member.model.Member;
 import kr.co.anajo.web.component.member.model.MemberStatus;
@@ -27,9 +34,19 @@ public class MemberService {
 		return (Member) this.resourceDao.getResource(id);
 	}
 
-	public Member getMemberForLoginId(String loginId) {
-		Query query = new Query(new Criteria("loginId").is(loginId));
-		return (Member) this.resourceDao.getResource(query, Member.class);
+	public JsonObject getMemberForLoginId(String loginId) throws Exception {
+		HttpClient client = HttpClientBuilder.create().build();
+		
+		URIBuilder builder = new URIBuilder("http://localhost:36006/read");
+		builder.setParameter("loginId", loginId);
+		
+		HttpGet get = new HttpGet(builder.build());
+		HttpResponse response = client.execute(get);
+		
+		String content = EntityUtils.toString(response.getEntity());
+
+		JsonParser parser = new JsonParser();
+		return parser.parse(content).getAsJsonObject();
 	}
 
 	@Transactional

@@ -5,8 +5,6 @@
 	
 	<display-name>AnaJo</display-name>
 	
-	<absolute-ordering/>
-	
 	<!-- log4j -->
 	<context-param>
 		<param-name>log4jConfigLocation</param-name>
@@ -35,7 +33,7 @@
 	<!-- authentication filter -->
 	<filter>
 		<filter-name>authenticationFilter</filter-name>
-		<filter-class>kr.co.anajo.web.AuthenticationFilter</filter-class>
+		<filter-class>kr.co.anajo.web.auth.AuthenticationFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>authenticationFilter</filter-name>

@@ -19,12 +19,6 @@
 	
 	<dependencies>
 	
-		<dependency>
-			<groupId>kr.co.anajo</groupId>
-			<artifactId>core</artifactId>
-			<version>0.0.1</version>
-		</dependency>
-	
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

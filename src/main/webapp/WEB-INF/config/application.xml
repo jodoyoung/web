@@ -19,9 +19,13 @@
 	<util:properties id="config" location="/WEB-INF/config/properties.xml" />
 	
 	<!-- Component Scan -->
-	<context:component-scan base-package="kr.co.anajo.web.component" />
-    
+	<context:component-scan base-package="kr.co.anajo.web">
+		<context:exclude-filter expression="org.springframework.stereotype.Controller" type="annotation" />
+	</context:component-scan>
+	
 	<!-- Database Configuration -->
+	<mongo:repositories base-package="kr.co.anajo.web" />
+    
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg ref="mongo" />
 		<constructor-arg name="databaseName" value="#{config['mongodb.databaseName']}" />

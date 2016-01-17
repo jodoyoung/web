@@ -13,7 +13,9 @@
     <mvc:annotation-driven />
     
     <!-- Controller Scan -->
-    <context:component-scan base-package="kr.co.anajo.web.presentation.controller" />
+    <context:component-scan base-package="kr.co.anajo.web" use-default-filters="false">
+    	<context:include-filter expression="org.springframework.stereotype.Controller" type="annotation" />
+    </context:component-scan>
 
     <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

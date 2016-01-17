@@ -4,6 +4,7 @@ package kr.co.anajo.web.menu;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,11 +15,8 @@ public class MenuController {
 	private MenuService menuService;
 
 	@RequestMapping("/menu/create")
-	public void create(String id, String title, MenuVisibility visibility, String link, Integer order) {
-		if(order == null) {
-			order = 0;
-		}
-		this.menuService.create(id, title, visibility, link, order);
+	public void create(@RequestBody Menu menu) {
+		this.menuService.create(menu);
 	}
 
 	@RequestMapping("/menu/read")

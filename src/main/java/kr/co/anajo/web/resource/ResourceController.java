@@ -49,7 +49,7 @@ public class ResourceController {
 		// }
 	}
 
-	@RequestMapping(value = "/type/{type}", method = RequestMethod.GET, produces = "!" + MediaType.TEXT_HTML_VALUE)
+	@RequestMapping(value = "/type/{type}", method = RequestMethod.GET)
 	public List<Resource> type(@PathVariable("type") String type) {
 		if (!StringUtils.hasText(type)) {
 			throw new InvalidParameterException("type is null.");

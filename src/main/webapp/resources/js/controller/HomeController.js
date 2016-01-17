@@ -3,7 +3,7 @@
     
     $http({
     	method: 'GET',
-    	url: '/menu',
+    	url: '/menu/list',
     	headers: { 'Accept': 'application/json; charset=utf-8' }
     })
     .success(function(result) {

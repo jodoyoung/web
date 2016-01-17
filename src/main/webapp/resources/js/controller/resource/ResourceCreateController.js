@@ -16,11 +16,10 @@ controllers.controller('ResourceCreateController', [ '$scope', '$routeParams', '
 		
 		$http({
 			method: 'PUT',
-			url: '/',
+			url: '/member/create',
 			data: $scope.Member,
 			headers: {
-				'Content-Type': 'application/json; charset=utf-8',
-				'X-Resource-Type': $scope.type
+				'Content-Type': 'application/json; charset=utf-8'
 			}
 		})
 		.success(function(result) {
@@ -46,11 +45,10 @@ controllers.controller('ResourceCreateController', [ '$scope', '$routeParams', '
 		
 		$http({
 			method: 'PUT',
-			url: '/',
+			url: '/menu/create',
 			data: $scope.Menu,
 			headers: {
-				'Content-Type': 'application/json; charset=utf-8',
-				'X-Resource-Type': $scope.type
+				'Content-Type': 'application/json; charset=utf-8'
 			}
 		})
 		.success(function(result) {

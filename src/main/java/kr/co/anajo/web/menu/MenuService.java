@@ -11,6 +11,10 @@ public class MenuService {
 
 	@Autowired
 	private MenuRepository menuRepository;
+	
+	public void create(Menu menu) {
+		this.menuRepository.insert(menu);
+	}
 
 	public void create(String id, String title, MenuVisibility visibility, String link, int order) {
 		Menu menu = new Menu();

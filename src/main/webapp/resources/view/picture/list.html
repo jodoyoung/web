@@ -1,8 +1,10 @@
 <div>
 	<div class="row">
         <div class="col-md-2" ng-repeat="directory in directories">
-            <a href="/picture/directory{{directory.path}}" type="button" class="btn btn-primary">
-                {{directory.name}}
+            <a href="/picture/directory{{directory.path}}">
+            	<div class="folder">
+                	{{directory.name}}
+            	</div>
             </a>
 		</div>
 		<div class="col-md-2" ng-repeat="video in videos">
@@ -15,7 +17,7 @@
 		<div class="col-md-2" ng-repeat="thumbnail in thumbnails">
             <img data-original="/picture/thumbnail{{thumbnail.path}}" alt="{{thumbnail.name}}" class="img-thumbnail lazy"
                 ng-click="previewImage(thumbnail.name, thumbnail.path);" data-toggle="modal" data-target="#myModal"
-				width="150px" height="150px" image-lazy-load />
+				width="150px" height="120px" image-lazy-load />
 		</div>
 	</div>
 </div>

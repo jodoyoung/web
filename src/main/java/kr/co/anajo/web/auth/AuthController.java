@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.co.anajo.web.member.MemberService;
+
 @Controller
 public class AuthController {
 
@@ -17,8 +19,15 @@ public class AuthController {
 	@Autowired
 	private AuthService authService;
 
+	@Autowired
+	private MemberService memberService;
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginPage() {
+		if (this.memberService.count() == 0) {
+			return "member/create";
+		}
+
 		return "auth/login";
 	}
 

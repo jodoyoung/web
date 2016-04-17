@@ -4,7 +4,7 @@
 	<comment>System configure</comment>
 	
 	<!-- Database -->
-	<entry key="mongodb.host">192.168.0.100</entry>
+	<entry key="mongodb.host">127.0.0.1</entry>
 	<entry key="mongodb.port">5050</entry>
 	<entry key="mongodb.databaseName">anajo</entry>
 

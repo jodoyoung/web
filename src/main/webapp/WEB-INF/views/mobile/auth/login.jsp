@@ -3,12 +3,15 @@
 <c:set var="contextPath" value="/${pageContext.request.contextPath}" />
 <html>
 <head>
-	<%@ include file="../common/header.jsp" %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=500, initial-scale=1">
+    <link rel="stylesheet" href="${contextPath}resources/css/mobile.css" type="text/css" />
+    <link rel="shortcut icon" href="${contextPath}favicon.ico" />
 </head>
 <body>
     <div id="wrapper">
         <section>
-			<article>
+			<article class="login">
 				<div class="logo">
 					<a href="${contextPath}"><img	src="${contextPath}resources/img/logo.png" alt="anajo" /></a>
 				</div>
@@ -16,12 +19,14 @@
 					<form action="/login" method="POST">
 						<input type="text" name="loginId" placeholder="아이디" autofocus /><br />
 						<input type="password" name="password" placeholder="비밀번호" /><br />
-						<br /> <br /> <input name="submit" type="submit" value="로그인" class="btnLogin" />
+						<br /> <br /> <input name="submit" type="submit" value="로그인" class="button" />
 					</form>
 				</div>
 		    </article>
 	    </section>
-	    <%@ include file="../common/footer.jsp" %>
+	    <footer>
+	           ⓒ2012 <a href="mailto:jodoyoung36@gmail.com">jodoyoung</a>
+	    </footer>
     </div>
 </body>
 </html>

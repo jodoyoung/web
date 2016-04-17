@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -13,8 +14,8 @@ public class MemberController {
 	private MemberService memberService;
 
 	@RequestMapping("/member/create")
-	public void create(String id, String loginId, String name, String password, String email, MemberStatus status) {
-		this.memberService.create(id, loginId, name, password, email, status);
+	public void create(String loginId, String name, String password, String email, MemberStatus status) {
+		this.memberService.create(loginId, name, password, email, status);
 	}
 
 	@RequestMapping("/member/read")
@@ -35,5 +36,15 @@ public class MemberController {
 	@RequestMapping("/member/delete")
 	public void delete(String id) {
 		this.memberService.delete(id);
+	}
+
+	@RequestMapping("/public/member/create")
+	@ResponseBody 
+	public String publicCreate(String loginId, String name, String password, String email) {
+		if (this.memberService.count() != 0) {
+			return "failed";
+		}
+		this.create(loginId, name, password, email, MemberStatus.ACTIVATION);
+		return "success";
 	}
 }

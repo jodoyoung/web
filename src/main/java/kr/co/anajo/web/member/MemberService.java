@@ -6,20 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import kr.co.anajo.web.util.IdGenerator;
+
 @Service
 public class MemberService {
 
 	@Autowired
 	private MemberRepository memberRepository;
 
-	public void create(String id, String loginId, String name, String password, String email, MemberStatus status) {
+	public void create(String loginId, String name, String password, String email, MemberStatus status) {
 		Member member = new Member();
-		member.setId(id);
+		member.setId(IdGenerator.createUUID());
 		member.setLoginId(loginId);
 		member.setName(name);
 		member.setPassword(password);
 		member.setEmail(email);
-		member.setStatus(status);
+		member.setStatus(status == null ? MemberStatus.ACTIVATION : status);
 		this.memberRepository.insert(member);
 	}
 
@@ -50,6 +52,10 @@ public class MemberService {
 
 	public Member getMemberByLoginId(String loginId) {
 		return this.memberRepository.findByLoginId(loginId);
+	}
+
+	public Long count() {
+		return this.memberRepository.count();
 	}
 
 }

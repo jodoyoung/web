@@ -28,14 +28,19 @@ public class AuthenticationFilter implements Filter {
 	}
 
 	@Override
-	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException,
-			ServletException {
+	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
+			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
 
 		String uri = request.getRequestURI();
-		logger.debug("request uri : " + uri);
 		// TODO 권한 체크.
 		if ("/login".equals(uri)) {
+			chain.doFilter(req, res);
+			return;
+		}
+
+		if (uri.startsWith("/public")) {
+			logger.info("public uri: {}", uri);
 			chain.doFilter(req, res);
 			return;
 		}
@@ -44,8 +49,7 @@ public class AuthenticationFilter implements Filter {
 		if (obj != null && obj instanceof Member) {
 			chain.doFilter(req, res);
 		} else {
-			RequestDispatcher dispatcher = this.filterConfig.getServletContext().getRequestDispatcher(
-					"/WEB-INF/views/auth/login.jsp");
+			RequestDispatcher dispatcher = this.filterConfig.getServletContext().getRequestDispatcher("/login");
 			dispatcher.forward(req, res);
 		}
 	}
